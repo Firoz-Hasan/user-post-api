@@ -1,5 +1,6 @@
 package com.firoz.mobileappws.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,10 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @Entity
 public class Post {
@@ -40,7 +37,7 @@ public class Post {
 			inverseJoinColumns = {
 					@JoinColumn(name = "tag_id", referencedColumnName = "id",
 							nullable = false, updatable = false)})
-	private Set<Tag> tags;
+	private List<Tag> tags;
 
 
 	public Post(String postname, String description, Integer userid) {
@@ -96,11 +93,11 @@ public class Post {
 	}
 
 	//@JsonBackReference
-	public Set<Tag> getTags() {
+	public List<Tag> getTags() {
 		return tags;
 	}
 
-	public void setTags(Set<Tag> tags) {
+	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
 	

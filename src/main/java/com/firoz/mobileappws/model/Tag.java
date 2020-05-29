@@ -3,6 +3,7 @@ package com.firoz.mobileappws.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -44,18 +45,18 @@ public class Tag {
 	 */
 	
 	@JsonBackReference
-	public Set<Post> getPosts() {
+	public List<Post> getPosts() {
 		return posts;
 	}
 
-	public void setPosts(Set<Post> posts) {
+	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
 
 	@ManyToMany( fetch = FetchType.LAZY)
-	private Set<Post> posts;
+	private List<Post> posts;
 
-	public Tag(String tagname, Set<Post> posts) {
+	public Tag(String tagname, List<Post> posts) {
 		super();
 		this.tagname = tagname;
 		this.posts = posts;

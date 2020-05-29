@@ -3,6 +3,7 @@ package com.firoz.mobileappws.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 
@@ -31,7 +32,7 @@ public class Page {
 	private String pagedescription;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
-	private Set<User> users;
+	private List<User> users;
 
 	public int getId() {
 		return id;
@@ -66,11 +67,11 @@ public class Page {
 	}
 
 	@JsonBackReference
-	public Set<User> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(Set<User> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 
