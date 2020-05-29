@@ -1,6 +1,7 @@
 package com.firoz.mobileappws.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import javax.persistence.*;
 import java.util.List;
@@ -30,6 +31,16 @@ public class User {
                             nullable = false, updatable = false)})
 	private Set<Page> pages;
 
+
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
 	public Set<Page> getPages() {
 		return pages;
 	}
@@ -58,20 +69,14 @@ public class User {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstname;
-	}
 
-	public void setFirstName(String firstName) {
-		this.firstname = firstName;
-	}
 
-	public String getLastName() {
+	public String getLastname() {
 		return lastname;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastname = lastName;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	public String getEmail() {
@@ -82,11 +87,11 @@ public class User {
 		this.email = email;
 	}
 
-	public User( String firstName, String lastName, String email) {
+	public User( String firstname, String lastname, String email) {
 		super();
 		
-		this.firstname = firstName;
-		this.lastname = lastName;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.email = email;
 	}
 

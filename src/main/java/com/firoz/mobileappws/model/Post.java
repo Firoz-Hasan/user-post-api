@@ -18,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @Entity
-@JsonPropertyOrder({"id", "postname"})
 public class Post {
 
 	@Id
@@ -56,10 +55,10 @@ public class Post {
 	}
 
 
-	public String getPostName() {
+	public String getPostname() {
 		return postname;
 	}
-	public void setPostName(String postname) {
+	public void setPostname(String postname) {
 		this.postname = postname;
 	}
 	
@@ -95,10 +94,6 @@ public class Post {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-
-
-
 
 	//@JsonBackReference
 	public Set<Tag> getTags() {

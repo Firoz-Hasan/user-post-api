@@ -30,7 +30,7 @@ public class Page {
 	private String pagename;
 	private String pagedescription;
 	
-	@ManyToMany(mappedBy = "pages", fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	private Set<User> users;
 
 	public int getId() {
