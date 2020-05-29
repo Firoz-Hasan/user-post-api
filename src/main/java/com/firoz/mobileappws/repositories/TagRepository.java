@@ -14,6 +14,8 @@ import com.firoz.mobileappws.model.User;
 @Repository
 public interface TagRepository extends JpaRepository<Tag, Integer>{
 
+
+    // kaj kortese nah
 	@Query(value = "select e FROM Tag e WHERE e.id = ?1")
     Page<Tag> listAllByPage(org.springframework.data.domain.Pageable pageable);
 }
