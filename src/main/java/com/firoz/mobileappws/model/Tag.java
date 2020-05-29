@@ -1,16 +1,9 @@
 package com.firoz.mobileappws.model;
 
-import java.util.Set;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "tags")
@@ -42,7 +35,7 @@ public class Tag {
 	}
 
 	
-	/*
+	/* JsonBackReference
 	 * This annotation basically says that posts will not be part of the JSON
 	 * returned for tag (but each post will contain list of its tags in the
 	 * response). If the post was a part of the list then the program would fetch
@@ -59,7 +52,7 @@ public class Tag {
 		this.posts = posts;
 	}
 
-	@ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
+	@ManyToMany( fetch = FetchType.LAZY)
 	private Set<Post> posts;
 
 	public Tag(String tagname, Set<Post> posts) {

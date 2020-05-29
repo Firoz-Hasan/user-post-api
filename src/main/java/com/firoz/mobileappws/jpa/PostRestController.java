@@ -66,8 +66,8 @@ public class PostRestController {
 			@RequestParam(defaultValue = "1") int userid
 			) {
 
-		Post u = new Post(postname, description, userid);
-		Post savedPost = postRepository.save(u);
+		Post post = new Post(postname, description, userid);
+		Post savedPost = postRepository.save(post);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedPost.getId())
 				.toUri();

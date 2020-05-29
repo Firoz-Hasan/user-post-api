@@ -15,34 +15,34 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @Entity
+@JsonPropertyOrder({"id", "postname"})
 public class Post {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String postname;
-	
-	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "post_tags",
-            joinColumns = {
-                    @JoinColumn(name = "post_id", referencedColumnName = "id",
-                            nullable = false, updatable = false)},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "tag_id", referencedColumnName = "id",
-                            nullable = false, updatable = false)})
-	private Set<Tag> tags;
-	
-	//@JsonBackReference
-	public Set<Tag> getTags() {
-		return tags;
-	}
+	private String description;
+	private Integer userid;
 
-	public void setTags(Set<Tag> tags) {
-		this.tags = tags;
-	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="userid", insertable=false, updatable=false)
+	private User user;
+
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@JoinTable(name = "post_tags",
+			joinColumns = {
+					@JoinColumn(name = "post_id", referencedColumnName = "id",
+							nullable = false, updatable = false)},
+			inverseJoinColumns = {
+					@JoinColumn(name = "tag_id", referencedColumnName = "id",
+							nullable = false, updatable = false)})
+	private Set<Tag> tags;
+
 
 	public Post(String postname, String description, Integer userid) {
 		super();
@@ -50,14 +50,18 @@ public class Post {
 		this.description = description;
 		this.userid = userid;
 	}
-	private String description;
-	
-	
-	@ManyToOne
-	@JoinColumn(name="userid", insertable=false, updatable=false)
-	private User user;
-	
-	private Integer userid;	
+
+	public Post() {
+		super();
+	}
+
+
+	public String getPostName() {
+		return postname;
+	}
+	public void setPostName(String postname) {
+		this.postname = postname;
+	}
 	
 	public Integer getUserid() {
 		return userid;
@@ -74,12 +78,7 @@ public class Post {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getPostName() {
-		return postname;
-	}
-	public void setPostName(String postName) {
-		this.postname = postName;
-	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -87,21 +86,27 @@ public class Post {
 		this.description = description;
 	}
 	
+	/*
 	@JsonBackReference
 	public User getUser() {
 		return user;
 	}
+	*/
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Post(String postName, String description, User user) {
-		super();
-		this.postname = postName;
-		this.description = description;
-		this.user = user;
+
+
+
+
+
+	//@JsonBackReference
+	public Set<Tag> getTags() {
+		return tags;
 	}
-	public Post() {
-		super();
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
 	}
 	
 }

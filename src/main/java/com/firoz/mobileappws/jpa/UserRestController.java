@@ -31,8 +31,8 @@ public class UserRestController {
 	
 	@Autowired
 	private PostRepository postRepository;
-	
-	
+
+
 
 	@GetMapping("/users")
 	public List<User> retrieveAllUsers() {
@@ -84,6 +84,7 @@ public class UserRestController {
 	
 	@GetMapping("/users/{id}/posts")
 	public List<Post> retrieveAllpostsForSpecificUser(@PathVariable int id) {
+
 		Optional<User> userOptional = userRepository.findById(id);
 		
 		if(!userOptional.isPresent()) {
@@ -95,7 +96,7 @@ public class UserRestController {
 	
 	
 	@PostMapping("/users/{id}/posts")
-	public ResponseEntity<Object> createPost(@PathVariable int id, @RequestBody Post post) {
+	public ResponseEntity<Object> createPostForSpecificUser(@PathVariable int id, @RequestBody Post post) {
 		
 		Optional<User> userOptional = userRepository.findById(id);
 		
