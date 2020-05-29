@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import com.firoz.mobileappws.model.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.firoz.mobileappws.exception.UserNotFoundException;
+import com.firoz.mobileappws.exception.NotFoundException;
 import com.firoz.mobileappws.model.Post;
 import com.firoz.mobileappws.model.User;
 import com.firoz.mobileappws.repositories.PostRepository;
@@ -88,7 +89,7 @@ public class UserRestController {
 		Optional<User> userOptional = userRepository.findById(id);
 		
 		if(!userOptional.isPresent()) {
-			throw new UserNotFoundException("id-" + id);
+			throw new NotFoundException("id-" + id);
 		}
 		
 		return userOptional.get().getPosts();
@@ -101,7 +102,7 @@ public class UserRestController {
 		Optional<User> userOptional = userRepository.findById(id);
 		
 		if(!userOptional.isPresent()) {
-			throw new UserNotFoundException("id-" + id);
+			throw new NotFoundException("id-" + id);
 		}
 
 		User user = userOptional.get();
@@ -116,5 +117,26 @@ public class UserRestController {
 		return ResponseEntity.created(location).build();
 
 	}
-	
+
+
+	// kaj kortese nah
+
+	@GetMapping("/users/{userId}/posts/{postID}")
+	public List<Tag> retrieveAlltagsForSpecificUserAndPost(@PathVariable int userid, @PathVariable int postid) {
+
+		Optional<User> userOptional = userRepository.findById(userid);
+		Optional<Post> postOptional = postRepository.findById(postid);
+
+		if(!userOptional.isPresent()) {
+			throw new NotFoundException("id-" + userid);
+		}
+		if(!postOptional.isPresent()) {
+			throw new NotFoundException("id-" + postid);
+		}
+
+
+		return postOptional.get().getTags();
+	}
+
+
 }
