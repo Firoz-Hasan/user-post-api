@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
+// @Component - i may need object of this class so do component scan in beginning
 public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Autowired
