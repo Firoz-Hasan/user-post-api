@@ -24,7 +24,7 @@ import com.firoz.mobileappws.model.Post;
 import com.firoz.mobileappws.repositories.PostRepository;
 
 @RestController
-//@RepositoryRestResource(exported = false) hal disable kore
+
 public class PostRestController {
 
 	

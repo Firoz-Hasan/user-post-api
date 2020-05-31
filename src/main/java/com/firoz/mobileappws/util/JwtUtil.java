@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-// @Service beans hold the business logic and call methods in the repository layer
 public class JwtUtil {
 
     private String SECRET_KEY = "secret";

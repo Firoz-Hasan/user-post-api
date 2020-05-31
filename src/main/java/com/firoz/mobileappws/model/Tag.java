@@ -35,14 +35,7 @@ public class Tag {
 	}
 
 	
-	/* JsonBackReference
-	 * This annotation basically says that posts will not be part of the JSON
-	 * returned for tag (but each post will contain list of its tags in the
-	 * response). If the post was a part of the list then the program would fetch
-	 * the post's tags, which would then make the program fetch the post again
-	 * and again until we’d get a StackOverflowException.
-	 */
-	
+
 	@JsonBackReference
 	public List<Post> getPosts() {
 		return posts;
