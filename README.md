@@ -21,3 +21,7 @@ Spring boot applicaiton for crud operation
 10) @controller - returns mapping AKA view as html/jsp
 11) JWT - json web token - used for api authentication 
 12) @Repository - This is to indicate that the class defines a data repository.
+13) ResponseEntity is meant to represent the entire HTTP response. 
+    You can control anything that goes into it: status code, headers, and body.
+14) @ResponseBody is a marker for the HTTP response body and @ResponseStatus declares the 
+    status code of the HTTP response.

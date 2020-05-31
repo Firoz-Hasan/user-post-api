@@ -1,4 +1,4 @@
-package com.firoz.mobileappws.exception;
+package com.firoz.mobileappws.model;
 
 import java.util.Date;
 
