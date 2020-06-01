@@ -43,6 +43,13 @@ public class TagRestController {
 		return tagRepository.tagName(name);
 	}
 
+	@GetMapping("/alltags")
+	public List<Tag> alltags() {
+
+		return tagRepository.listAllByPage();
+	}
+
+
 	@GetMapping("/tags/{id}")
 	public Optional<Tag> retrieveTag(@PathVariable int id) {
 		return tagRepository.findById(id);

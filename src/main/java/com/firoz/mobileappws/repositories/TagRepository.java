@@ -1,5 +1,6 @@
 package com.firoz.mobileappws.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,12 +20,13 @@ public interface TagRepository extends JpaRepository<Tag, Integer>{
     List<Tag> listAllByPage(int id  );*/
 
 
-
     @Query("select e.tagname FROM Tag e WHERE e.id = ?1")
     Optional<Tag> tagID(@Param("id")int id);
 
     @Query("select e.id FROM Tag e WHERE e.tagname = ?1")
     Optional<Tag> tagName(@Param("tagname")String name);
 
+    @Query("select e FROM Tag e WHERE  e.id > 5")
+    List<Tag> listAllByPage();
 
 }
