@@ -46,7 +46,7 @@ public class TagRestController {
 	@GetMapping("/alltags")
 	public List<Tag> alltags() {
 
-		return tagRepository.listAllByPage();
+		return tagRepository.listAllTags();
 	}
 
 

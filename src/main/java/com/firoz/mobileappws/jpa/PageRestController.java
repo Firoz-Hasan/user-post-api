@@ -1,6 +1,7 @@
 package com.firoz.mobileappws.jpa;
 
 import com.firoz.mobileappws.model.Page;
+import com.firoz.mobileappws.model.Tag;
 import com.firoz.mobileappws.repositories.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,12 @@ public class PageRestController {
 		return (List<Page>) pageRepository.findAll();
 	}
 
+
+	@GetMapping("/allpages/{members}")
+	public List<Page> allPageMembers(@PathVariable int members) {
+
+		return pageRepository.listAllPageMembers(members);
+	}
 
 
 	@GetMapping("/pages/{id}")

@@ -27,6 +27,6 @@ public interface TagRepository extends JpaRepository<Tag, Integer>{
     Optional<Tag> tagName(@Param("tagname")String name);
 
     @Query("select e FROM Tag e WHERE  e.id > 5")
-    List<Tag> listAllByPage();
+    List<Tag> listAllTags();
 
 }
