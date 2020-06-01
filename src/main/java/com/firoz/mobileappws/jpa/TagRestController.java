@@ -26,11 +26,22 @@ public class TagRestController {
 		return (List<Tag>) tagRepository.findAll();
 	}
 	
-	@GetMapping("/tagsbypage")
+	/*@GetMapping("/tagsbypage")
 	public List<Tag> retrieveAlltagsQuery(Pageable pageable) {
 		return (List<Tag>) tagRepository.listAllByPage((Pageable) pageable);
+	}*/
+
+	@GetMapping("/tagnamebyid/{id}")
+	public Optional<Tag> retrieveTagName(@PathVariable int id) {
+
+		return tagRepository.tagID(id);
 	}
 
+	@GetMapping("/tagidbyname/{name}")
+	public Optional<Tag> retrieveTagID(@PathVariable String name) {
+
+		return tagRepository.tagName(name);
+	}
 
 	@GetMapping("/tags/{id}")
 	public Optional<Tag> retrieveTag(@PathVariable int id) {
