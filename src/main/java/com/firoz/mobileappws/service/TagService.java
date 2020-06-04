@@ -1,6 +1,7 @@
 package com.firoz.mobileappws.service;
 
 import com.firoz.mobileappws.dtos.ApiResponse;
+import com.firoz.mobileappws.dtos.TagDto;
 import com.firoz.mobileappws.models.Tag;
 import org.springframework.http.ResponseEntity;
 
@@ -18,8 +19,14 @@ public interface TagService {
 
     ApiResponse listAllTagsGreaterThen5();
 
+    ApiResponse listAllTags();
+
     ApiResponse getApiResponseTagByIDwithoutQuery(int id);
 
     ResponseEntity deleteTagByID(int id);
+
+    ResponseEntity createTag(TagDto tagDto);
+
+    ResponseEntity createTagByReqParams(String tag);
 
 }

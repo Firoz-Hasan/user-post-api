@@ -21,7 +21,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.firoz.mobileappws.exception.NotFoundException;
 import com.firoz.mobileappws.models.Post;
 import com.firoz.mobileappws.models.User;
-import com.firoz.mobileappws.repositories.PostRepository;
+import com.firoz.mobileappws.daos.PostDaoRepository;
 import com.firoz.mobileappws.repositories.UserRepository;
 
 @RestController
@@ -31,7 +31,7 @@ public class UserRestController {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private PostRepository postRepository;
+	private PostDaoRepository postDaoRepository;
 
 
 
@@ -60,7 +60,8 @@ public class UserRestController {
 	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
 		User savedUser = userRepository.save(user);
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
+		URI location = ServletUriComponentsBuilder
+				.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
 				.toUri();
 
 		return ResponseEntity.created(location).build();
@@ -109,7 +110,7 @@ public class UserRestController {
 		
 		post.setUser(user);
 		
-		postRepository.save(post);
+		postDaoRepository.save(post);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(post.getId())
 				.toUri();
@@ -125,7 +126,7 @@ public class UserRestController {
 	public List<Tag> retrieveAlltagsForSpecificUserAndPost(@PathVariable int userid, @PathVariable int postid) {
 
 		Optional<User> userOptional = userRepository.findById(userid);
-		Optional<Post> postOptional = postRepository.findById(postid);
+		Optional<Post> postOptional = postDaoRepository.findById(postid);
 
 		if(!userOptional.isPresent()) {
 			throw new NotFoundException("id-" + userid);
