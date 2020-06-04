@@ -1,9 +1,10 @@
 package com.firoz.mobileappws.jpa;
 
-import com.firoz.mobileappws.model.Tag;
-import com.firoz.mobileappws.repositories.TagRepository;
+import com.firoz.mobileappws.dtos.ApiResponse;
+import com.firoz.mobileappws.models.Tag;
+import com.firoz.mobileappws.daos.TagDaoRepository;
+import com.firoz.mobileappws.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,14 @@ import java.util.Optional;
 public class TagRestController {
 
 	@Autowired
-	private TagRepository tagRepository;
+	private TagDaoRepository tagDaoRepository;
+
+	@Autowired
+	private TagService tagService;
 
 	@GetMapping("/tags")
 	public List<Tag> retrieveAlltags() {
-		return (List<Tag>) tagRepository.findAll();
+		return (List<Tag>) tagDaoRepository.findAll();
 	}
 	
 	/*@GetMapping("/tagsbypage")
@@ -31,39 +35,53 @@ public class TagRestController {
 		return (List<Tag>) tagRepository.listAllByPage((Pageable) pageable);
 	}*/
 
-	@GetMapping("/tagnamebyid/{id}")
-	public Optional<Tag> retrieveTagName(@PathVariable int id) {
+	@GetMapping("/tagbyid/{id}")
+	public ApiResponse retrieveTagName2(@PathVariable int id) {
 
-		return tagRepository.tagID(id);
+		return tagService.getApiResponseTagByID(id);
+	}
+
+	@GetMapping("/tagnamebyid/{id}")
+	public ApiResponse retrieveTagName(@PathVariable int id) {
+
+		return tagService.getOnlyApiResponseTagNameById(id);
 	}
 
 	@GetMapping("/tagidbyname/{name}")
-	public Optional<Tag> retrieveTagID(@PathVariable String name) {
+	public ApiResponse retrieveTagID(@PathVariable String name) {
 
-		return tagRepository.tagName(name);
+		return tagService.getOnlyApiResponseTagIdByIName(name);
 	}
 
-	@GetMapping("/alltags")
-	public List<Tag> alltags() {
+	@GetMapping("/fulltagbyname/{name}")
+	public Optional<Tag> retrieveFullTag(@PathVariable String name) {
 
-		return tagRepository.listAllTags();
+		return tagService.getOnlyFullTagByName(name);
+	}
+
+	@GetMapping("/alltagsgreaterthen5")
+	public ApiResponse alltags() {
+
+		return tagService.listAllTagsGreaterThen5();
 	}
 
 
 	@GetMapping("/tags/{id}")
-	public Optional<Tag> retrieveTag(@PathVariable int id) {
-		return tagRepository.findById(id);
+	public ApiResponse retrieveTag(@PathVariable int id) {
+
+		return tagService.getApiResponseTagByIDwithoutQuery(id);
 	}
 
 
 	@DeleteMapping("/tags/{id}")
-	public void deleteTag(@PathVariable int id) {
-		tagRepository.deleteById(id);
+	public ResponseEntity deleteTag(@PathVariable int id) {
+
+		return tagService.deleteTagByID(id);
 	}
 
 	@PostMapping("/tags")
 	public ResponseEntity<Object> createTags(@Valid @RequestBody Tag tag) {
-		Tag savedTag = tagRepository.save(tag);
+		Tag savedTag = tagDaoRepository.save(tag);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedTag.getId())
 				.toUri();
@@ -78,7 +96,7 @@ public class TagRestController {
 
 	){
 		Tag tag = new Tag(tagname);
-		Tag savedTag = tagRepository.save(tag);
+		Tag savedTag = tagDaoRepository.save(tag);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedTag.getId())
 				.toUri();
 		return ResponseEntity.created(location).build();

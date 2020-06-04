@@ -1,12 +1,10 @@
 package com.firoz.mobileappws.repositories;
 
-import com.firoz.mobileappws.model.Tag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.firoz.mobileappws.model.Page;
-import com.firoz.mobileappws.model.User;
+import com.firoz.mobileappws.models.Page;
 
 import java.util.List;
 

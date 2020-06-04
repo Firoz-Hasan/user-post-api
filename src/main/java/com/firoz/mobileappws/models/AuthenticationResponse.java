@@ -1,4 +1,4 @@
-package com.firoz.mobileappws.model;
+package com.firoz.mobileappws.models;
 
 import java.io.Serializable;
 

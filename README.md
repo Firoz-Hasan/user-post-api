@@ -1,7 +1,9 @@
 # user-post-api
 Spring boot applicaiton for crud operation
 
-1) Optional : Return type Optional is a new container type that wraps a single value
+1) Optional : Return type Optional is a new container type that wraps a single value. It is used 
+    to represent a value is present or absent. The main advantage of this new construct is that 
+    No more too many null checks and NullPointerException
 2) @RepositoryRestResource(exported = false) hal disable kore
 3) JsonBackReference
    	 * This annotation basically says that posts will not be part of the JSON
@@ -30,3 +32,12 @@ Spring boot applicaiton for crud operation
     its own. When we delete the Person entity, our Address entity should also get deleted.        
     Cascading is the way to achieve this. When we perform some action on the target entity, 
     the same action will be applied to the associated entity.
+17) DTO is an abbreviation for Data Transfer Object, 
+    so it is used to transfer the data between classes and modules of your application. 
+    DTO should only contain private fields for your data, getters, setters and constructors. 
+    It is not recommended to add business logic methods to such classes, but it is OK to add 
+    some util methods. 
+18) DAO is an abbreviation for Data Access Object, 
+    so it should encapsulate the logic for retrieving, saving and updating data in your
+    data storage (a database, a file-system, whatever).
+    

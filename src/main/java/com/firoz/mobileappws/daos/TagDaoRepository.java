@@ -1,4 +1,4 @@
-package com.firoz.mobileappws.repositories;
+package com.firoz.mobileappws.daos;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,10 +9,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 
-import com.firoz.mobileappws.model.Tag;
+import com.firoz.mobileappws.models.Tag;
 
 @Repository
-public interface TagRepository extends JpaRepository<Tag, Integer>{
+public interface TagDaoRepository extends JpaRepository<Tag, Integer>{
 
 
     // kaj kortese nah
@@ -21,12 +21,18 @@ public interface TagRepository extends JpaRepository<Tag, Integer>{
 
 
     @Query("select e.tagname FROM Tag e WHERE e.id = ?1")
-    Optional<Tag> tagID(@Param("id")int id);
+    Optional<Tag> getOnlyTagNameById(@Param("id")int id);
 
     @Query("select e.id FROM Tag e WHERE e.tagname = ?1")
-    Optional<Tag> tagName(@Param("tagname")String name);
+    Optional<Tag> getOnlyTagIdByName(@Param("tagname")String name);
 
     @Query("select e FROM Tag e WHERE  e.id > 5")
-    List<Tag> listAllTags();
+    List<Tag> listAllTagsGreaterThen5();
+
+    @Query("select e FROM Tag e WHERE e.tagname = ?1")
+    Optional<Tag> getOnlyFullTagByName(@Param("tagname")String name);
+
+    @Query("select e FROM Tag e WHERE e.id = ?1")
+    Optional<Tag> getApiResponseTagByID(@Param("id")int id);
 
 }

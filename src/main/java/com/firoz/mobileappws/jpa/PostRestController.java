@@ -7,14 +7,14 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import com.firoz.mobileappws.exception.NotFoundException;
-import com.firoz.mobileappws.model.Tag;
+import com.firoz.mobileappws.models.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.firoz.mobileappws.model.Post;
+import com.firoz.mobileappws.models.Post;
 import com.firoz.mobileappws.repositories.PostRepository;
 
 @RestController

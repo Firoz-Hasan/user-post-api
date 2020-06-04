@@ -2,7 +2,7 @@ package com.firoz.mobileappws.exception;
 
 import java.util.Date;
 
-import com.firoz.mobileappws.model.ExceptionResponse;
+import com.firoz.mobileappws.models.ExceptionResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

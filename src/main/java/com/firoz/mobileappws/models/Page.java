@@ -1,11 +1,9 @@
-package com.firoz.mobileappws.model;
+package com.firoz.mobileappws.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
-
 
 
 @Entity
