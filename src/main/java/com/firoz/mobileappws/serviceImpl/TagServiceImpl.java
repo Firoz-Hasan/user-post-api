@@ -3,6 +3,7 @@ package com.firoz.mobileappws.serviceImpl;
 import com.firoz.mobileappws.daos.TagDaoRepository;
 import com.firoz.mobileappws.dtos.ApiResponse;
 import com.firoz.mobileappws.dtos.MessageResponse;
+
 import com.firoz.mobileappws.dtos.TagDto;
 import com.firoz.mobileappws.models.Tag;
 import com.firoz.mobileappws.service.TagService;
@@ -68,8 +69,8 @@ public class TagServiceImpl implements TagService {
     @Override
     public ResponseEntity createTag(TagDto tagDto) {
 
-        Tag tag = new Tag(tagDto.getTagname());
-        Tag savedTag = tagDaoRepository.save(tag);
+        Tag tag1 = new Tag(tagDto.getTgname());
+        Tag savedTag = tagDaoRepository.save(tag1);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}").buildAndExpand(savedTag.getId())

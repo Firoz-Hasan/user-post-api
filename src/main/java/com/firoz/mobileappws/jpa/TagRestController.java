@@ -1,19 +1,16 @@
 package com.firoz.mobileappws.jpa;
 
+import com.firoz.mobileappws.daos.TagDaoRepository;
 import com.firoz.mobileappws.dtos.ApiResponse;
 import com.firoz.mobileappws.dtos.TagDto;
 import com.firoz.mobileappws.models.Tag;
-import com.firoz.mobileappws.daos.TagDaoRepository;
 import com.firoz.mobileappws.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 @RestController

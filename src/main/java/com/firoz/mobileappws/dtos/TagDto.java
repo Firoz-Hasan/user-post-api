@@ -1,17 +1,20 @@
 package com.firoz.mobileappws.dtos;
 
 public class TagDto {
-    private String tagname;
-
-    public String getTagname() {
-        return tagname;
+    public String getTgname() {
+        return tgname;
     }
 
-    public void setTagname(String tagname) {
-        this.tagname = tagname;
+    public void setTgname(String tgname) {
+        this.tgname = tgname;
     }
 
-    public TagDto(String tagname) {
-        this.tagname = tagname;
+    public TagDto() {
+    }
+
+    private String tgname;
+
+    public TagDto(String tgname) {
+        this.tgname = tgname;
     }
 }

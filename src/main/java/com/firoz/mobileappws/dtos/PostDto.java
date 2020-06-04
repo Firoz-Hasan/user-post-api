@@ -34,4 +34,7 @@ public class PostDto {
         this.description = description;
         this.userid = userid;
     }
+
+    public PostDto() {
+    }
 }
