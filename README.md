@@ -40,4 +40,5 @@ Spring boot applicaiton for crud operation
 18) DAO is an abbreviation for Data Access Object, 
     so it should encapsulate the logic for retrieving, saving and updating data in your
     data storage (a database, a file-system, whatever).
-    
+19) Dao uses Spring JPA to perform DB operations whereas DaoImpl has implementation with 
+    Hibernate for performing DB operations.

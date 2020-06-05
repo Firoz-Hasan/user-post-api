@@ -1,3 +1,4 @@
+/*
 package com.firoz.mobileappws.authentication;
 
 import com.firoz.mobileappws.filters.JwtRequestFilter;
@@ -52,3 +53,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 }
+*/

@@ -1,4 +1,4 @@
-package com.firoz.mobileappws.authentication;
+package com.firoz.mobileappws.Security;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

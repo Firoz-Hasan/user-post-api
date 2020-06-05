@@ -1,6 +1,6 @@
 package com.firoz.mobileappws.jpa;
-
-import com.firoz.mobileappws.authentication.MyUserDetailsService;
+/*
+import com.firoz.mobileappws.Security.MyUserDetailsService;
 import com.firoz.mobileappws.models.AuthenticationRequest;
 import com.firoz.mobileappws.models.AuthenticationResponse;
 import com.firoz.mobileappws.util.JwtUtil;
@@ -75,3 +75,5 @@ public class AuthenticaitonRestController {
     }
 
 }
+
+ */
