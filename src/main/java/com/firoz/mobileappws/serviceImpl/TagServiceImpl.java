@@ -1,7 +1,7 @@
 package com.firoz.mobileappws.serviceImpl;
 
 import com.firoz.mobileappws.daos.TagDaoRepository;
-import com.firoz.mobileappws.dtos.ApiResponseDto;
+import com.firoz.mobileappws.dtos.ApiResponse;
 import com.firoz.mobileappws.dtos.MessageResponseDto;
 
 import com.firoz.mobileappws.dtos.TagDto;
@@ -23,18 +23,18 @@ public class TagServiceImpl implements TagService {
 
 
     @Override
-    public ApiResponseDto getApiResponseTagByID(int id) {
-        return new ApiResponseDto(200, "success", tagDaoRepository.getApiResponseTagByID(id));
+    public ApiResponse getApiResponseTagByID(int id) {
+        return new ApiResponse(200, "success", tagDaoRepository.getApiResponseTagByID(id));
     }
 
     @Override
-    public ApiResponseDto getOnlyApiResponseTagNameById(int id) {
-        return new ApiResponseDto(200, "success", tagDaoRepository.getOnlyTagNameById(id));
+    public ApiResponse getOnlyApiResponseTagNameById(int id) {
+        return new ApiResponse(200, "success", tagDaoRepository.getOnlyTagNameById(id));
     }
 
     @Override
-    public ApiResponseDto getOnlyApiResponseTagIdByIName(String name) {
-        return new ApiResponseDto(200, "success", tagDaoRepository.getOnlyTagIdByName(name));
+    public ApiResponse getOnlyApiResponseTagIdByIName(String name) {
+        return new ApiResponse(200, "success", tagDaoRepository.getOnlyTagIdByName(name));
     }
 
     @Override
@@ -43,20 +43,20 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public ApiResponseDto listAllTagsGreaterThen5() {
-        return new ApiResponseDto(200, "success", tagDaoRepository.listAllTagsGreaterThen5());
+    public ApiResponse listAllTagsGreaterThen5() {
+        return new ApiResponse(200, "success", tagDaoRepository.listAllTagsGreaterThen5());
 
     }
 
     @Override
-    public ApiResponseDto listAllTags() {
-        return new ApiResponseDto(200, "success", tagDaoRepository.findAll());
+    public ApiResponse listAllTags() {
+        return new ApiResponse(200, "success", tagDaoRepository.findAll());
 
     }
 
     @Override
-    public ApiResponseDto getApiResponseTagByIDwithoutQuery(int id) {
-        return new ApiResponseDto(200, "success", tagDaoRepository.findById(id));
+    public ApiResponse getApiResponseTagByIDwithoutQuery(int id) {
+        return new ApiResponse(200, "success", tagDaoRepository.findById(id));
     }
 
     @Override

@@ -14,6 +14,8 @@ public class Page {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int pagemembers;
+	private String pagename;
+	private String pagedescription;
 	
 	public Page() {
 		super();
@@ -26,8 +28,7 @@ public class Page {
 		this.pagedescription = pagedescription;
 	}
 
-	private String pagename;
-	private String pagedescription;
+
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<User> users;

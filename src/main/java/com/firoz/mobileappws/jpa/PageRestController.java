@@ -1,55 +1,47 @@
 package com.firoz.mobileappws.jpa;
 
-import com.firoz.mobileappws.models.Page;
-import com.firoz.mobileappws.repositories.PageRepository;
+import com.firoz.mobileappws.dtos.ApiResponse;
+import com.firoz.mobileappws.dtos.PageDto;
+import com.firoz.mobileappws.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.net.URI;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class PageRestController {
 
 	@Autowired
-	private PageRepository pageRepository;
+	private PageService pageService;
 
 	@GetMapping("/pages")
-	public List<Page> retrieveAllpages() {
-		return (List<Page>) pageRepository.findAll();
+	public ApiResponse retrieveAllpages() {
+
+		return pageService.getAllPages();
 	}
 
 
 	@GetMapping("/allpages/{members}")
-	public List<Page> allPageMembers(@PathVariable int members) {
-
-		return pageRepository.listAllPageMembers(members);
+	public ApiResponse allPageMembers(@PathVariable int members) {
+		return pageService.getPageByNumberOfMembers(members);
 	}
 
 
 	@GetMapping("/pages/{id}")
 	//Optional is a new container type that wraps a single value
-	public Optional<Page> retrievePage(@PathVariable int id) {
-		return pageRepository.findById(id);
+	public ApiResponse retrievePage(@PathVariable int id) {
+		return pageService.getPageById(id);
 	}
 
 	@DeleteMapping("/pages/{id}")
-	public void deletePage(@PathVariable int id) {
-		pageRepository.deleteById(id);
+	public ResponseEntity deletePage(@PathVariable int id) {
+		return pageService.deletePageById(id);
 	}
 
 	@PostMapping("/pages")
-	public ResponseEntity<Object> createUser(@Valid @RequestBody Page page) {
-		Page savedUser = pageRepository.save(page);
-
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
-				.toUri();
-
-		return ResponseEntity.created(location).build();
+	public ResponseEntity<Object> createUser(@Valid @RequestBody PageDto pageDto) {
+		return pageService.createPage(pageDto);
 
 	}
 
@@ -59,13 +51,7 @@ public class PageRestController {
 			@RequestParam(defaultValue = "hello") String pagedescription,
 			@RequestParam(defaultValue = "hello") int pagemembers) {
 
-		Page page = new Page(pagemembers, pagedescription, pagename);
-		Page savedPage = pageRepository.save(page);
-
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedPage.getId())
-				.toUri();
-
-		return ResponseEntity.created(location).build();
+		return pageService.createPageByReqParams(pagename, pagedescription, pagemembers);
 
 	}
 }

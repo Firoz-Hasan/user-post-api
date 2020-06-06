@@ -1,4 +1,4 @@
-package com.firoz.mobileappws.repositories;
+package com.firoz.mobileappws.daos;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -9,7 +9,7 @@ import com.firoz.mobileappws.models.Page;
 import java.util.List;
 
 @Repository
-public interface PageRepository extends JpaRepository<Page, Integer>{
+public interface PageDaoRepository extends JpaRepository<Page, Integer>{
 
     @Query("select e FROM Page e WHERE  e.pagemembers > ?1")
     List<Page> listAllPageMembers(int members);

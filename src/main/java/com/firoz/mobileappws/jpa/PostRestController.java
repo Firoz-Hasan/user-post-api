@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
-import com.firoz.mobileappws.dtos.ApiResponseDto;
+import com.firoz.mobileappws.dtos.ApiResponse;
 import com.firoz.mobileappws.dtos.PostDto;
 import com.firoz.mobileappws.exception.NotFoundException;
 import com.firoz.mobileappws.models.Tag;
@@ -30,13 +30,13 @@ public class PostRestController {
 	private PostDaoRepository postDaoRepository;
 
 	@GetMapping("/posts")
-	public ApiResponseDto retrieveAllPosts() {
+	public ApiResponse retrieveAllPosts() {
 
 		return postService.getAllPosts();
 	}
 
 	@GetMapping("/posts/{id}")
-	public ApiResponseDto retrievePost(@PathVariable int id) {
+	public ApiResponse retrievePost(@PathVariable int id) {
 
 		return postService.getPostById(id);
 	}

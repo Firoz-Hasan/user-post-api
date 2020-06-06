@@ -1,6 +1,6 @@
 package com.firoz.mobileappws.service;
 
-import com.firoz.mobileappws.dtos.ApiResponseDto;
+import com.firoz.mobileappws.dtos.ApiResponse;
 import com.firoz.mobileappws.dtos.TagDto;
 import com.firoz.mobileappws.models.Tag;
 import org.springframework.http.ResponseEntity;
@@ -9,19 +9,19 @@ import java.util.Optional;
 
 public interface TagService {
 
-    ApiResponseDto getApiResponseTagByID(int id);
+    ApiResponse getApiResponseTagByID(int id);
 
-    ApiResponseDto getOnlyApiResponseTagNameById(int id);
+    ApiResponse getOnlyApiResponseTagNameById(int id);
 
-    ApiResponseDto getOnlyApiResponseTagIdByIName(String name);
+    ApiResponse getOnlyApiResponseTagIdByIName(String name);
 
     Optional<Tag> getOnlyFullTagByName(String name);
 
-    ApiResponseDto listAllTagsGreaterThen5();
+    ApiResponse listAllTagsGreaterThen5();
 
-    ApiResponseDto listAllTags();
+    ApiResponse listAllTags();
 
-    ApiResponseDto getApiResponseTagByIDwithoutQuery(int id);
+    ApiResponse getApiResponseTagByIDwithoutQuery(int id);
 
     ResponseEntity deleteTagByID(int id);
 

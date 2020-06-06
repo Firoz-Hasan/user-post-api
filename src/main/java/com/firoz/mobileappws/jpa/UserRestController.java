@@ -22,13 +22,13 @@ import com.firoz.mobileappws.exception.NotFoundException;
 import com.firoz.mobileappws.models.Post;
 import com.firoz.mobileappws.models.User;
 import com.firoz.mobileappws.daos.PostDaoRepository;
-import com.firoz.mobileappws.repositories.UserRepository;
+import com.firoz.mobileappws.daos.UserDaoRepository;
 
 @RestController
 public class UserRestController {
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserDaoRepository userDaoRepository;
 	
 	@Autowired
 	private PostDaoRepository postDaoRepository;
@@ -37,17 +37,17 @@ public class UserRestController {
 
 	@GetMapping("/users")
 	public List<User> retrieveAllUsers() {
-		return (List<User>) userRepository.findAll();
+		return (List<User>) userDaoRepository.findAll();
 	}
 
 	@GetMapping("/users/{id}")
 	public Optional<User> retrieveUser(@PathVariable int id) {
-		return userRepository.findById(id);
+		return userDaoRepository.findById(id);
 	}
 
 	@DeleteMapping("/users/{id}")
 	public void deleteUser(@PathVariable int id) {
-		userRepository.deleteById(id);
+		userDaoRepository.deleteById(id);
 	}
 
 	//
@@ -58,7 +58,7 @@ public class UserRestController {
 
 	@PostMapping("/users")
 	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
-		User savedUser = userRepository.save(user);
+		User savedUser = userDaoRepository.save(user);
 
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
@@ -73,7 +73,7 @@ public class UserRestController {
 			@RequestParam(defaultValue = "hello") String lastname, @RequestParam(defaultValue = "hello") String email) {
 
 		User u = new User(firstname, lastname, email);
-		User savedUser = userRepository.save(u);
+		User savedUser = userDaoRepository.save(u);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
 				.toUri();
@@ -87,7 +87,7 @@ public class UserRestController {
 	@GetMapping("/users/{id}/posts")
 	public List<Post> retrieveAllpostsForSpecificUser(@PathVariable int id) {
 
-		Optional<User> userOptional = userRepository.findById(id);
+		Optional<User> userOptional = userDaoRepository.findById(id);
 		
 		if(!userOptional.isPresent()) {
 			throw new NotFoundException("id-" + id);
@@ -100,7 +100,7 @@ public class UserRestController {
 	@PostMapping("/users/{id}/posts")
 	public ResponseEntity<Object> createPostForSpecificUser(@PathVariable int id, @RequestBody Post post) {
 		
-		Optional<User> userOptional = userRepository.findById(id);
+		Optional<User> userOptional = userDaoRepository.findById(id);
 		
 		if(!userOptional.isPresent()) {
 			throw new NotFoundException("id-" + id);
@@ -125,7 +125,7 @@ public class UserRestController {
 	@GetMapping("/users/{userId}/posts/{postID}")
 	public List<Tag> retrieveAlltagsForSpecificUserAndPost(@PathVariable int userid, @PathVariable int postid) {
 
-		Optional<User> userOptional = userRepository.findById(userid);
+		Optional<User> userOptional = userDaoRepository.findById(userid);
 		Optional<Post> postOptional = postDaoRepository.findById(postid);
 
 		if(!userOptional.isPresent()) {

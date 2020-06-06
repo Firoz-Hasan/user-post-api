@@ -1,7 +1,7 @@
 package com.firoz.mobileappws.serviceImpl;
 
 import com.firoz.mobileappws.daos.PostDaoRepository;
-import com.firoz.mobileappws.dtos.ApiResponseDto;
+import com.firoz.mobileappws.dtos.ApiResponse;
 import com.firoz.mobileappws.dtos.MessageResponseDto;
 import com.firoz.mobileappws.dtos.PostDto;
 import com.firoz.mobileappws.models.Post;
@@ -21,13 +21,13 @@ public class PostServiceImpl implements PostService {
 
 
     @Override
-    public ApiResponseDto getAllPosts() {
-        return new ApiResponseDto(200, "Success", postDaoRepository.findAll());
+    public ApiResponse getAllPosts() {
+        return new ApiResponse(200, "Success", postDaoRepository.findAll());
     }
 
     @Override
-    public ApiResponseDto getPostById(int id) {
-        return new ApiResponseDto(200, "Success", postDaoRepository.findById(id));
+    public ApiResponse getPostById(int id) {
+        return new ApiResponse(200, "Success", postDaoRepository.findById(id));
     }
 
     @Override
