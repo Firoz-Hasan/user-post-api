@@ -48,7 +48,8 @@ public class AuthenticateServiceImpl implements AuthenticateService {
         Authentication authentication =
                 authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken
-                        (loginRequestDto.getUsername(), loginRequestDto.getPassword()));
+                        (loginRequestDto.getUsername(),
+                                loginRequestDto.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
@@ -104,14 +105,13 @@ public class AuthenticateServiceImpl implements AuthenticateService {
                         Role modRole = roleDaoRepository.findByName(ERole.ROLE_MODERATOR)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(modRole);
-                        System.out.println("bla bla bla bla "+ modRole.toString());
+
 
                         break;
                     default:
                         Role userRole = roleDaoRepository.findByName(ERole.ROLE_USER)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(userRole);
-                        System.out.println("bla bla bla bla "+ roleDaoRepository.findByName(ERole.ROLE_USER));
                 }
             });
         }
