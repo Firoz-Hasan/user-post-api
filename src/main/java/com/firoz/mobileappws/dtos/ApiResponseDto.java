@@ -1,18 +1,18 @@
 package com.firoz.mobileappws.dtos;
 
-public class ApiResponse {
+public class ApiResponseDto {
 
     private int status;
     private String message;
 
-    public ApiResponse(int status, String message) {
+    public ApiResponseDto(int status, String message) {
         this.status = status;
         this.message = message;
     }
 
     private Object result;
 
-    public ApiResponse(int status, String message, Object result){
+    public ApiResponseDto(int status, String message, Object result){
         this.status = status;
         this.message = message;
         this.result = result;

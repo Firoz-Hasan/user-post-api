@@ -1,7 +1,7 @@
 package com.firoz.mobileappws.jpa;
 
 import com.firoz.mobileappws.daos.TagDaoRepository;
-import com.firoz.mobileappws.dtos.ApiResponse;
+import com.firoz.mobileappws.dtos.ApiResponseDto;
 import com.firoz.mobileappws.dtos.TagDto;
 import com.firoz.mobileappws.models.Tag;
 import com.firoz.mobileappws.service.TagService;
@@ -24,7 +24,7 @@ public class TagRestController {
     private TagService tagService;
 
     @GetMapping("/tags")
-    public ApiResponse retrieveAlltags() {
+    public ApiResponseDto retrieveAlltags() {
         return tagService.listAllTags();
     }
 	
@@ -34,19 +34,19 @@ public class TagRestController {
 	}*/
 
     @GetMapping("/tagbyid/{id}")
-    public ApiResponse retrieveTagName2(@PathVariable int id) {
+    public ApiResponseDto retrieveTagName2(@PathVariable int id) {
 
         return tagService.getApiResponseTagByID(id);
     }
 
     @GetMapping("/tagnamebyid/{id}")
-    public ApiResponse retrieveTagName(@PathVariable int id) {
+    public ApiResponseDto retrieveTagName(@PathVariable int id) {
 
         return tagService.getOnlyApiResponseTagNameById(id);
     }
 
     @GetMapping("/tagidbyname/{name}")
-    public ApiResponse retrieveTagID(@PathVariable String name) {
+    public ApiResponseDto retrieveTagID(@PathVariable String name) {
 
         return tagService.getOnlyApiResponseTagIdByIName(name);
     }
@@ -58,14 +58,14 @@ public class TagRestController {
     }
 
     @GetMapping("/alltagsgreaterthen5")
-    public ApiResponse alltags() {
+    public ApiResponseDto alltags() {
 
         return tagService.listAllTagsGreaterThen5();
     }
 
 
     @GetMapping("/tags/{id}")
-    public ApiResponse retrieveTag(@PathVariable int id) {
+    public ApiResponseDto retrieveTag(@PathVariable int id) {
 
         return tagService.getApiResponseTagByIDwithoutQuery(id);
     }

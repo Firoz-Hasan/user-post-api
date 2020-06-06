@@ -1,4 +1,4 @@
-package com.firoz.mobileappws.service;
+package com.firoz.mobileappws.serviceImpl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.firoz.mobileappws.models.AuthenticateUser;

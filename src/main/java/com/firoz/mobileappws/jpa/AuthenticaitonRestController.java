@@ -1,7 +1,7 @@
 package com.firoz.mobileappws.jpa;
 /*
 import com.firoz.mobileappws.Security.MyUserDetailsService;
-import com.firoz.mobileappws.models.AuthenticationRequest;
+import com.firoz.mobileappws.dtos.AuthenticationRequest;
 import com.firoz.mobileappws.models.AuthenticationResponse;
 import com.firoz.mobileappws.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;

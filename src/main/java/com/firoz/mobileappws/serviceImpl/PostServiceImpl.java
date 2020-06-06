@@ -1,9 +1,8 @@
 package com.firoz.mobileappws.serviceImpl;
 
 import com.firoz.mobileappws.daos.PostDaoRepository;
-import com.firoz.mobileappws.daos.TagDaoRepository;
-import com.firoz.mobileappws.dtos.ApiResponse;
-import com.firoz.mobileappws.dtos.MessageResponse;
+import com.firoz.mobileappws.dtos.ApiResponseDto;
+import com.firoz.mobileappws.dtos.MessageResponseDto;
 import com.firoz.mobileappws.dtos.PostDto;
 import com.firoz.mobileappws.models.Post;
 import com.firoz.mobileappws.service.PostService;
@@ -22,19 +21,19 @@ public class PostServiceImpl implements PostService {
 
 
     @Override
-    public ApiResponse getAllPosts() {
-        return new ApiResponse(200, "Success", postDaoRepository.findAll());
+    public ApiResponseDto getAllPosts() {
+        return new ApiResponseDto(200, "Success", postDaoRepository.findAll());
     }
 
     @Override
-    public ApiResponse getPostById(int id) {
-        return new ApiResponse(200, "Success", postDaoRepository.findById(id));
+    public ApiResponseDto getPostById(int id) {
+        return new ApiResponseDto(200, "Success", postDaoRepository.findById(id));
     }
 
     @Override
     public ResponseEntity deletePostById(int id) {
         postDaoRepository.deleteById(id);
-        return ResponseEntity.ok(new MessageResponse("Post deleted successfully!"));
+        return ResponseEntity.ok(new MessageResponseDto("Post deleted successfully!"));
     }
 
     @Override
@@ -47,7 +46,7 @@ public class PostServiceImpl implements PostService {
                 .toUri();
 
          ResponseEntity.created(location).build();
-        return ResponseEntity.ok(new MessageResponse("Post created successfully!"));
+        return ResponseEntity.ok(new MessageResponseDto("Post created successfully!"));
     }
 
     @Override
@@ -62,6 +61,6 @@ public class PostServiceImpl implements PostService {
 
 
 
-        return ResponseEntity.ok(new MessageResponse("Post created successfully!"));
+        return ResponseEntity.ok(new MessageResponseDto("Post created successfully!"));
     }
 }

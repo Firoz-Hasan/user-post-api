@@ -1,8 +1,8 @@
 package com.firoz.mobileappws.serviceImpl;
 
 import com.firoz.mobileappws.daos.TagDaoRepository;
-import com.firoz.mobileappws.dtos.ApiResponse;
-import com.firoz.mobileappws.dtos.MessageResponse;
+import com.firoz.mobileappws.dtos.ApiResponseDto;
+import com.firoz.mobileappws.dtos.MessageResponseDto;
 
 import com.firoz.mobileappws.dtos.TagDto;
 import com.firoz.mobileappws.models.Tag;
@@ -23,18 +23,18 @@ public class TagServiceImpl implements TagService {
 
 
     @Override
-    public ApiResponse getApiResponseTagByID(int id) {
-        return new ApiResponse(200, "success", tagDaoRepository.getApiResponseTagByID(id));
+    public ApiResponseDto getApiResponseTagByID(int id) {
+        return new ApiResponseDto(200, "success", tagDaoRepository.getApiResponseTagByID(id));
     }
 
     @Override
-    public ApiResponse getOnlyApiResponseTagNameById(int id) {
-        return new ApiResponse(200, "success", tagDaoRepository.getOnlyTagNameById(id));
+    public ApiResponseDto getOnlyApiResponseTagNameById(int id) {
+        return new ApiResponseDto(200, "success", tagDaoRepository.getOnlyTagNameById(id));
     }
 
     @Override
-    public ApiResponse getOnlyApiResponseTagIdByIName(String name) {
-        return new ApiResponse(200, "success", tagDaoRepository.getOnlyTagIdByName(name));
+    public ApiResponseDto getOnlyApiResponseTagIdByIName(String name) {
+        return new ApiResponseDto(200, "success", tagDaoRepository.getOnlyTagIdByName(name));
     }
 
     @Override
@@ -43,26 +43,26 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public ApiResponse listAllTagsGreaterThen5() {
-        return new ApiResponse(200, "success", tagDaoRepository.listAllTagsGreaterThen5());
+    public ApiResponseDto listAllTagsGreaterThen5() {
+        return new ApiResponseDto(200, "success", tagDaoRepository.listAllTagsGreaterThen5());
 
     }
 
     @Override
-    public ApiResponse listAllTags() {
-        return new ApiResponse(200, "success", tagDaoRepository.findAll());
+    public ApiResponseDto listAllTags() {
+        return new ApiResponseDto(200, "success", tagDaoRepository.findAll());
 
     }
 
     @Override
-    public ApiResponse getApiResponseTagByIDwithoutQuery(int id) {
-        return new ApiResponse(200, "success", tagDaoRepository.findById(id));
+    public ApiResponseDto getApiResponseTagByIDwithoutQuery(int id) {
+        return new ApiResponseDto(200, "success", tagDaoRepository.findById(id));
     }
 
     @Override
     public ResponseEntity deleteTagByID(int id) {
         tagDaoRepository.deleteById(id);
-        return ResponseEntity.ok(new MessageResponse("Tag deleted successfully!"));
+        return ResponseEntity.ok(new MessageResponseDto("Tag deleted successfully!"));
 
     }
 
@@ -77,7 +77,7 @@ public class TagServiceImpl implements TagService {
                 .toUri();
 
         ResponseEntity.created(location).build();
-        return ResponseEntity.ok(new MessageResponse("Tag created successfully!"));
+        return ResponseEntity.ok(new MessageResponseDto("Tag created successfully!"));
     }
 
     @Override
@@ -87,6 +87,6 @@ public class TagServiceImpl implements TagService {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedTag.getId())
                 .toUri();
          ResponseEntity.created(location).build();
-        return ResponseEntity.ok(new MessageResponse("Tag created successfully!"));
+        return ResponseEntity.ok(new MessageResponseDto("Tag created successfully!"));
     }
 }

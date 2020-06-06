@@ -1,9 +1,9 @@
 package com.firoz.mobileappws.dtos;
 
-public class MessageResponse {
+public class MessageResponseDto {
 	private String message;
 
-	public MessageResponse(String message) {
+	public MessageResponseDto(String message) {
 	    this.message = message;
 	  }
 

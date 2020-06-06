@@ -1,13 +1,10 @@
 package com.firoz.mobileappws.service;
 
-import com.firoz.mobileappws.dtos.LoginRequest;
-import com.firoz.mobileappws.dtos.SignupRequest;
+import com.firoz.mobileappws.dtos.LoginRequestDto;
+import com.firoz.mobileappws.dtos.SignupRequestDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.validation.Valid;
 
 public interface AuthenticateService {
-    ResponseEntity<?> authenticateUser(LoginRequest loginRequest);
-    ResponseEntity<?> registerUser(SignupRequest signUpRequest);
+    ResponseEntity<?> authenticateUser(LoginRequestDto loginRequestDto);
+    ResponseEntity<?> registerUser(SignupRequestDto signUpRequestDto);
 }

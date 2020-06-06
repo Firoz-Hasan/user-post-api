@@ -1,6 +1,6 @@
 package com.firoz.mobileappws.util;
 
-import com.firoz.mobileappws.service.UserDetailsImpl;
+import com.firoz.mobileappws.serviceImpl.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +14,10 @@ import java.util.Date;
 public class JwtUtils {
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-	@Value("${bezkoder.app.jwtSecret}")
+	@Value("${fhd.app.jwtSecret}")
 	private String jwtSecret;
 
-	@Value("${bezkoder.app.jwtExpirationMs}")
+	@Value("${fhd.app.jwtExpirationMs}")
 	private int jwtExpirationMs;
 
 	public String generateJwtToken(Authentication authentication) {

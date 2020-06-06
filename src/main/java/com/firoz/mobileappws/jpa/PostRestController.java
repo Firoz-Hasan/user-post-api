@@ -1,12 +1,11 @@
 package com.firoz.mobileappws.jpa;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
-import com.firoz.mobileappws.dtos.ApiResponse;
+import com.firoz.mobileappws.dtos.ApiResponseDto;
 import com.firoz.mobileappws.dtos.PostDto;
 import com.firoz.mobileappws.exception.NotFoundException;
 import com.firoz.mobileappws.models.Tag;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.firoz.mobileappws.models.Post;
 import com.firoz.mobileappws.daos.PostDaoRepository;
@@ -32,13 +30,13 @@ public class PostRestController {
 	private PostDaoRepository postDaoRepository;
 
 	@GetMapping("/posts")
-	public ApiResponse retrieveAllPosts() {
+	public ApiResponseDto retrieveAllPosts() {
 
 		return postService.getAllPosts();
 	}
 
 	@GetMapping("/posts/{id}")
-	public ApiResponse retrievePost(@PathVariable int id) {
+	public ApiResponseDto retrievePost(@PathVariable int id) {
 
 		return postService.getPostById(id);
 	}

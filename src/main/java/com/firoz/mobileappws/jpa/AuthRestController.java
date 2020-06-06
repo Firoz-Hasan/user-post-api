@@ -1,7 +1,7 @@
 package com.firoz.mobileappws.jpa;
 
-import com.firoz.mobileappws.dtos.LoginRequest;
-import com.firoz.mobileappws.dtos.SignupRequest;
+import com.firoz.mobileappws.dtos.LoginRequestDto;
+import com.firoz.mobileappws.dtos.SignupRequestDto;
 import com.firoz.mobileappws.service.AuthenticateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +20,12 @@ public class AuthRestController {
 
 
 	@PostMapping("/signin")
-	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-
-		return authenticateService.authenticateUser(loginRequest);
+	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequestDto loginRequestDto) {
+		return authenticateService.authenticateUser(loginRequestDto);
 	}
 
 	@PostMapping("/signup")
-	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-		return authenticateService.registerUser(signUpRequest);
+	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequestDto signUpRequestDto) {
+		return authenticateService.registerUser(signUpRequestDto);
 	}
 }

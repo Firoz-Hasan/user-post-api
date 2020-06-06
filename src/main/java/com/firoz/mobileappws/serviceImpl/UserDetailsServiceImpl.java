@@ -1,7 +1,8 @@
-package com.firoz.mobileappws.service;
+package com.firoz.mobileappws.serviceImpl;
 
 import com.firoz.mobileappws.daos.AuthenticateDaoRepository;
 import com.firoz.mobileappws.models.AuthenticateUser;
+import com.firoz.mobileappws.serviceImpl.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

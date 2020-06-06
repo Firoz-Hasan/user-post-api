@@ -2,7 +2,7 @@ package com.firoz.mobileappws.dtos;
 
 import javax.validation.constraints.NotBlank;
 
-public class LoginRequest {
+public class LoginRequestDto {
 	@NotBlank
 	private String username;
 

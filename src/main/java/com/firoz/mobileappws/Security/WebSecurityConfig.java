@@ -1,8 +1,8 @@
 package com.firoz.mobileappws.Security;
 
-import com.firoz.mobileappws.service.UserDetailsServiceImpl;
+import com.firoz.mobileappws.serviceImpl.UserDetailsServiceImpl;
 import com.firoz.mobileappws.util.AuthEntryPointJwt;
-import com.firoz.mobileappws.util.AuthTokenFilter;
+import com.firoz.mobileappws.filters.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,8 +31,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	private AuthEntryPointJwt unauthorizedHandler;
 
 	@Bean
-	public AuthTokenFilter authenticationJwtTokenFilter() {
-		return new AuthTokenFilter();
+	public JwtRequestFilter authenticationJwtTokenFilter() {
+		return new JwtRequestFilter();
 	}
 
 	@Override
@@ -56,7 +56,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable()
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.authorizeRequests().antMatchers("/api/auth/**", "/h2-console/**").permitAll()
+			.authorizeRequests().antMatchers("/api/auth/**")
+				.permitAll()
 			.antMatchers("/api/test/**").permitAll()
 			.anyRequest().authenticated();
 
