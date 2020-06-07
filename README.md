@@ -1,8 +1,10 @@
-# user-post-api
+# User-Post-API
 Spring boot applicaiton for crud operation
 
 This is a demo application which demonstrates RESTful web services, Spring boot, Spring MVC, JPA, Connect to MYSQL db, Spring Security  Sign up, Sign in, JSON web token (JWT) based authentication. The basic architecture of this application is given below. 
-
+![alt text](
+https://github.com/FirozHasan007/user-post-api/blob/master/High-Level-Design.png
+)
 
 
 The EER model diagram as follows 
