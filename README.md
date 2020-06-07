@@ -15,6 +15,10 @@ The EER model diagram as follows
 https://github.com/FirozHasan007/user-post-api/blob/master/mydb.png
 )
 
+The diagram for Authentication Manager which is responsible for validate authenticaiton from db.
+![alt text](
+https://github.com/FirozHasan007/user-post-api/blob/master/authmanager.png
+)
 To make best use of spring boot application, it's mandatory to understand following concepts
 
 1) Optional : Return type Optional is a new container type that wraps a single value. It is used 
