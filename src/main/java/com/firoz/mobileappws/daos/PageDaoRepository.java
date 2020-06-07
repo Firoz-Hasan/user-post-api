@@ -12,6 +12,6 @@ import java.util.List;
 public interface PageDaoRepository extends JpaRepository<Page, Integer>{
 
     @Query("select e FROM Page e WHERE  e.pagemembers > ?1")
-    List<Page> listAllPageMembers(int members);
+    List<Page> listAllPageMembersGreaterThenGivenMembersNumber(int members);
 
 }

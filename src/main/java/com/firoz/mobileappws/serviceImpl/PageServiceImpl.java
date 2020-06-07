@@ -22,16 +22,18 @@ public class PageServiceImpl implements PageService {
 
     @Override
     public ApiResponse getAllPages() {
+
         return new ApiResponse(200, "success", pageDaoRepository.findAll());
     }
 
     @Override
     public ApiResponse getPageByNumberOfMembers(int members) {
-        return new ApiResponse(200, "success", pageDaoRepository.listAllPageMembers(members));
+        return new ApiResponse(200, "success", pageDaoRepository.listAllPageMembersGreaterThenGivenMembersNumber(members));
     }
 
     @Override
     public ApiResponse getPageById(int id) {
+
         return new ApiResponse(200, "success", pageDaoRepository.findById(id));
     }
 

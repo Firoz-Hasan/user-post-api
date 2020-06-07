@@ -22,8 +22,8 @@ public class PageRestController {
 	}
 
 
-	@GetMapping("/allpages/{members}")
-	public ApiResponse allPageMembers(@PathVariable int members) {
+	@GetMapping("/pagebymembersnumber/{members}")
+	public ApiResponse retrievePageByGreaterThenGivenMembersNumber(@PathVariable int members) {
 		return pageService.getPageByNumberOfMembers(members);
 	}
 
