@@ -10,7 +10,6 @@ The EER model diagram as follows
 To make best use of spring boot application clearly following annotation is required to be cleared. 
 
 
-
 1) Optional : Return type Optional is a new container type that wraps a single value. It is used 
     to represent a value is present or absent. The main advantage of this new construct is that 
     No more too many null checks and NullPointerException
