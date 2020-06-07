@@ -9,6 +9,10 @@ https://github.com/FirozHasan007/user-post-api/blob/master/High-Level-Design.png
 
 The EER model diagram as follows 
 
+![alt text](
+https://github.com/FirozHasan007/user-post-api/blob/master/mydb.png
+)
+
 To make best use of spring boot application clearly following annotation is required to be cleared. 
 
 
