@@ -85,9 +85,14 @@ Procedure to test APIs
  }
  
  3- for getting lists of users/pages/posts/tags (Get)
+ 
  url - http://localhost:8083/users
+ 
  url - http://localhost:8083/pages
+ 
  url - http://localhost:8083/posts
+ 
  url - http://localhost:8083/tags
+ 
  
  Dont forget to add jwt token in the authorization header before calling any API request which you will get it during SignIn process
