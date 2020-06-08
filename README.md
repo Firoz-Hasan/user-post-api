@@ -65,6 +65,7 @@ To make best use of spring boot application, it's mandatory to understand follow
 
 
 Procedure to test APIs
+
 1- for SignUp (post)
  url - http://localhost:8083/api/auth/signup
  in the body 
