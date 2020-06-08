@@ -64,3 +64,29 @@ To make best use of spring boot application, it's mandatory to understand follow
     Hibernate for performing DB operations.
 
 
+Procedure to test APIs
+1- for SignUp (post)
+ url - http://localhost:8083/api/auth/signup
+ in the body 
+ {
+ "username" : "hos",
+ "email": "hosgmail@sdf.com",
+ "password" : "aaaaaa",
+ "role" : ["admin"]
+ }
+ 
+ 2- for SignIn (post)
+ url - localhost:8083/api/auth/signin
+ in the body 
+ {
+ "username" : "hos",
+ "password" : "aaaaaa"
+ }
+ 
+ 3- for getting lists of users/pages/posts/tags (Get)
+ url - http://localhost:8083/users
+ url - http://localhost:8083/pages
+ url - http://localhost:8083/posts
+ url - http://localhost:8083/tags
+ 
+ Dont forget to add jwt token in the authorization header before calling any API request which you will get it during SignIn process
