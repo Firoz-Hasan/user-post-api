@@ -2,6 +2,8 @@ package com.firoz.mobileappws.jpa;
 
 import com.firoz.mobileappws.daos.TagDaoRepository;
 import com.firoz.mobileappws.dtos.ApiResponse;
+import com.firoz.mobileappws.dtos.ApiResponseOnlyMsg;
+import com.firoz.mobileappws.dtos.ApiResponseWithPagination;
 import com.firoz.mobileappws.dtos.TagDto;
 import com.firoz.mobileappws.models.Tag;
 import com.firoz.mobileappws.service.TagService;
@@ -11,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -27,6 +30,19 @@ public class TagRestController {
     public ApiResponse retrieveAlltags() {
         return tagService.listAllTags();
     }
+
+    @GetMapping("/tagsbypagination")
+    public ApiResponseWithPagination retrieveAlltagsbypagination(
+            @RequestParam(required = false) String tagname,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size,
+            @RequestParam(defaultValue = "id,asc") String[] sort
+    ) {
+        return tagService.getAllTagbyPage(
+               tagname, page, size, sort
+        );
+    }
+
 	
 	/*@GetMapping("/tagsbypage")
 	public List<Tag> retrieveAlltagsQuery(Pageable pageable) {
@@ -90,6 +106,14 @@ public class TagRestController {
 
     ) {
 		return tagService.createTagByReqParams(tagname);
+    }
+
+    @PostMapping("/tagsbyreqparamgetapiresponse")
+    public ApiResponseOnlyMsg createTagsByParamgetApiResponse(
+            @RequestParam String tagname
+
+    ) {
+        return  tagService.createTagByReqParamsAndGetApiResponse(tagname);
     }
 
 }

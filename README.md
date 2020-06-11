@@ -94,5 +94,8 @@ Procedure to test APIs
  
  url - http://localhost:8083/tags
  
+ paginaiton with JpaRepository - http://localhost:8083/tagsbypagination?size=5&page=0
+ 
+ 
  
  Dont forget to add jwt token in the authorization header before calling any API request which you will get it during SignIn process
