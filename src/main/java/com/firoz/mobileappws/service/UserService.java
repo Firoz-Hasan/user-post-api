@@ -3,6 +3,7 @@ package com.firoz.mobileappws.service;
 import com.firoz.mobileappws.daos.PostDaoRepository;
 import com.firoz.mobileappws.daos.UserDaoRepository;
 import com.firoz.mobileappws.dtos.ApiResponse;
+import com.firoz.mobileappws.dtos.ApiResponseWithPagination;
 import com.firoz.mobileappws.dtos.PageDto;
 import com.firoz.mobileappws.dtos.UserDto;
 import com.firoz.mobileappws.models.Post;
@@ -27,5 +28,7 @@ public interface UserService {
     ApiResponse retrieveAllpostsForSpecificUser(int id);
 
     ResponseEntity<Object> createPostForSpecificUser( int id, Post post);
+
+    ApiResponseWithPagination getAllUsersByPagination(String title, int page, int size, String[] sort);
 
 }

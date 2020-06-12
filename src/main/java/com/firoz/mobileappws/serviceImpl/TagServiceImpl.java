@@ -131,7 +131,7 @@ public class TagServiceImpl implements TagService {
             List<Tag> tags = new ArrayList<Tag>();
             Pageable pagingSort = PageRequest.of(page, size, Sort.by(sortingOrders));
 
-            //in this pagetags, data will be coming fm db and save it here inside pagetags
+            //in this pageTags, data will be coming fm db and save it here inside pageTags
             Page<Tag> pageTags;
             if (tagname == null) {
                 pageTags = tagDaoRepository.findAll(pagingSort);

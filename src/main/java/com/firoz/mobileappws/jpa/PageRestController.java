@@ -1,6 +1,7 @@
 package com.firoz.mobileappws.jpa;
 
 import com.firoz.mobileappws.dtos.ApiResponse;
+import com.firoz.mobileappws.dtos.ApiResponseWithPagination;
 import com.firoz.mobileappws.dtos.PageDto;
 import com.firoz.mobileappws.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,19 @@ public class PageRestController {
 
 		return pageService.getAllPages();
 	}
+
+	@GetMapping("/pagesbypagination")
+	public ApiResponseWithPagination retrieveAllPagesByPagination(
+			@RequestParam(required = false) String pagename,
+			@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "3") int size,
+			@RequestParam(defaultValue = "id,asc") String[] sort
+	) {
+		return pageService.getAllPagesByPagination(
+				pagename, page, size, sort
+		);
+	}
+
 
 
 	@GetMapping("/pagebymembersnumber/{members}")

@@ -3,6 +3,7 @@ package com.firoz.mobileappws.jpa;
 import com.firoz.mobileappws.daos.PostDaoRepository;
 import com.firoz.mobileappws.daos.UserDaoRepository;
 import com.firoz.mobileappws.dtos.ApiResponse;
+import com.firoz.mobileappws.dtos.ApiResponseWithPagination;
 import com.firoz.mobileappws.dtos.UserDto;
 import com.firoz.mobileappws.exception.NotFoundException;
 import com.firoz.mobileappws.models.Post;
@@ -35,6 +36,19 @@ public class UserRestController {
 	public ApiResponse retrieveAllUsers() {
 		return userService.getAllUsers();
 	}
+
+	@GetMapping("/usersbypagination")
+	public ApiResponseWithPagination retrieveAllUsersByPagination(
+			@RequestParam(required = false) String username,
+			@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "3") int size,
+			@RequestParam(defaultValue = "id,asc") String[] sort
+	) {
+		return userService.getAllUsersByPagination(
+				username, page, size, sort
+		);
+	}
+
 
 	@GetMapping("/users/{id}")
 	public ApiResponse retrieveUser(@PathVariable int id) {

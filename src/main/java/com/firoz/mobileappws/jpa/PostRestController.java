@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import com.firoz.mobileappws.dtos.ApiResponse;
+import com.firoz.mobileappws.dtos.ApiResponseWithPagination;
 import com.firoz.mobileappws.dtos.PostDto;
 import com.firoz.mobileappws.exception.NotFoundException;
 import com.firoz.mobileappws.models.Tag;
@@ -34,6 +35,19 @@ public class PostRestController {
 
 		return postService.getAllPosts();
 	}
+
+	@GetMapping("/postsbypagination")
+	public ApiResponseWithPagination retrieveAllPostsByPagination(
+			@RequestParam(required = false) String postname,
+			@RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "3") int size,
+			@RequestParam(defaultValue = "id,asc") String[] sort
+	) {
+		return postService.getAllPostsByPagination(
+				postname, page, size, sort
+		);
+	}
+
 
 	@GetMapping("/posts/{id}")
 	public ApiResponse retrievePost(@PathVariable int id) {
