@@ -99,7 +99,11 @@ Procedure to test APIs
  
  url - http://localhost:8083/tags
  
- paginaiton with JpaRepository - http://localhost:8083/tagsbypagination?size=5&page=0
+ paginaiton with JpaRepository - 
+ url - http://localhost:8083/tagsbypagination?size=5&page=0
+ url - http://localhost:8083/usersbypagination?size=5&page=0
+ url - http://localhost:8083/pagesbypagination?size=5&page=0
+ url - http://localhost:8083/postsbypagination?size=5&page=0
  
  
  
