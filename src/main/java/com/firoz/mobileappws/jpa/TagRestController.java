@@ -2,7 +2,7 @@ package com.firoz.mobileappws.jpa;
 
 import com.firoz.mobileappws.daos.TagDaoRepository;
 import com.firoz.mobileappws.dtos.ApiResponse;
-import com.firoz.mobileappws.dtos.ApiResponseOnlyMsg;
+import com.firoz.mobileappws.dtos.ApiResponseMsgWthStatus;
 import com.firoz.mobileappws.dtos.ApiResponseWithPagination;
 import com.firoz.mobileappws.dtos.TagDto;
 import com.firoz.mobileappws.models.Tag;
@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -38,7 +37,7 @@ public class TagRestController {
             @RequestParam(defaultValue = "3") int size,
             @RequestParam(defaultValue = "id,asc") String[] sort
     ) {
-        return tagService.getAllTagbyPage(
+        return tagService.getAllTagsByPagination(
                tagname, page, size, sort
         );
     }
@@ -109,7 +108,7 @@ public class TagRestController {
     }
 
     @PostMapping("/tagsbyreqparamgetapiresponse")
-    public ApiResponseOnlyMsg createTagsByParamgetApiResponse(
+    public ApiResponseMsgWthStatus createTagsByParamgetApiResponse(
             @RequestParam String tagname
 
     ) {

@@ -24,7 +24,7 @@ To make best use of spring boot application, it's mandatory to understand follow
 1) Optional : Return type Optional is a new container type that wraps a single value. It is used 
     to represent a value is present or absent. The main advantage of this new construct is that 
     No more too many null checks and NullPointerException
-2) @RepositoryRestResource(exported = false) hal disable kore
+2) @RepositoryRestResource(exported = false) disable hal features
 3) JsonBackReference
    	 * This annotation basically says that posts will not be part of the JSON
    	 * returned for tag (but each post will contain list of its tags in the
@@ -62,6 +62,11 @@ To make best use of spring boot application, it's mandatory to understand follow
     data storage (a database, a file-system, whatever).
 19) Dao uses Spring JPA to perform DB operations whereas DaoImpl has implementation with 
     Hibernate for performing DB operations.
+20) JpaRepository extends PagingAndSortingRepository which in turn extends CrudRepository.
+    Their main functions are:
+    CrudRepository : mainly provides CRUD functions.
+    PagingAndSortingRepository : provides methods to do pagination and sorting records.
+    JpaRepository : provides some JPA-related methods such as flushing the persistence context and deleting records in a batch.
 
 
 Procedure to test APIs

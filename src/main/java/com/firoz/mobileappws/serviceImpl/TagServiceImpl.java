@@ -12,7 +12,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -94,7 +93,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public ApiResponseOnlyMsg createTagByReqParamsAndGetApiResponse(String tag) {
+    public ApiResponseMsgWthStatus createTagByReqParamsAndGetApiResponse(String tag) {
         Tag tag1 = new Tag(tag);
         Tag savedTag = tagDaoRepository.save(tag1);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedTag.getId())
@@ -102,11 +101,11 @@ public class TagServiceImpl implements TagService {
         ResponseEntity.created(location).build();
        // return ResponseEntity.ok(new MessageResponseDto("Tag created successfully!"));
 
-        return new ApiResponseOnlyMsg(HttpStatus.OK.value(), "Tag created successfully!");
+        return new ApiResponseMsgWthStatus(HttpStatus.OK.value(), "Tag created successfully!");
     }
 
     @Override
-    public ApiResponseWithPagination getAllTagbyPage(
+    public ApiResponseWithPagination getAllTagsByPagination(
             String tagname,
             int page,
             int size,
@@ -114,46 +113,48 @@ public class TagServiceImpl implements TagService {
     ) {
 
         try {
-            List<Sort.Order> orders = new ArrayList<Sort.Order>();
+            List<Sort.Order> sortingOrders = new ArrayList<Sort.Order>();
 
             if (sort[0].contains(",")) {
+                // sort/order by multiple columns
                 // will sort more than 2 fields
                 // sortOrder="field, direction"
                 for (String sortOrder : sort) {
                     String[] _sort = sortOrder.split(",");
-                    orders.add(new Sort.Order(getSortDirection(_sort[1]), _sort[0]));
+                    sortingOrders.add(new Sort.Order(getSortDirection(_sort[1]), _sort[0]));
                 }
             } else {
                 // sort=[field, direction]
-                orders.add(new Sort.Order(getSortDirection(sort[1]), sort[0]));
+                sortingOrders.add(new Sort.Order(getSortDirection(sort[1]), sort[0]));
             }
 
             List<Tag> tags = new ArrayList<Tag>();
-            Pageable pagingSort = PageRequest.of(page, size, Sort.by(orders));
+            Pageable pagingSort = PageRequest.of(page, size, Sort.by(sortingOrders));
 
-            Page<Tag> pageTuts;
+            //in this pagetags, data will be coming fm db and save it here inside pagetags
+            Page<Tag> pageTags;
             if (tagname == null) {
-                pageTuts = tagDaoRepository.findAll(pagingSort);
+                pageTags = tagDaoRepository.findAll(pagingSort);
             }
             else
-               pageTuts = tagDaoRepository.findByTagnameContaining(tagname, pagingSort);
-               // pageTuts = tagDaoRepository.findAll(pagingSort);
+               pageTags = tagDaoRepository.findByTagnameContaining(tagname, pagingSort);
+               // pageTags = tagDaoRepository.findAll(pagingSort);
 
-            tags = pageTuts.getContent();
+            tags = pageTags.getContent();
 
             if (tags.isEmpty()) {
                 //return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-                return new ApiResponseWithPagination(HttpStatus.NO_CONTENT.value(), "No content", null, null);
+                return new ApiResponseWithPagination(HttpStatus.NO_CONTENT.value(), "No content found", null, null);
             }
 
-            Map<String, Object> response = new HashMap<>();
-            Map<String, Object> commonresponse = new HashMap<>();
-            response.put("tags", tags);
-            commonresponse.put("currentPage", pageTuts.getNumber());
-            commonresponse.put("totalItems", pageTuts.getTotalElements());
-            commonresponse.put("totalPages", pageTuts.getTotalPages());
+            Map<String, Object> responseTagLists = new HashMap<>();
+            Map<String, Object> commonResponse = new HashMap<>();
+            responseTagLists.put("tags", tags);
+            commonResponse.put("currentPage", pageTags.getNumber());
+            commonResponse.put("totalItems", pageTags.getTotalElements());
+            commonResponse.put("totalPages", pageTags.getTotalPages());
 
-            return new ApiResponseWithPagination(HttpStatus.OK.value(), "success", commonresponse, response);
+            return new ApiResponseWithPagination(HttpStatus.OK.value(), "success", commonResponse, responseTagLists);
 
         } catch (Exception e) {
 

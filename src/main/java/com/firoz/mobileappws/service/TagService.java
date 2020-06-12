@@ -1,12 +1,11 @@
 package com.firoz.mobileappws.service;
 
 import com.firoz.mobileappws.dtos.ApiResponse;
-import com.firoz.mobileappws.dtos.ApiResponseOnlyMsg;
+import com.firoz.mobileappws.dtos.ApiResponseMsgWthStatus;
 import com.firoz.mobileappws.dtos.ApiResponseWithPagination;
 import com.firoz.mobileappws.dtos.TagDto;
 import com.firoz.mobileappws.models.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -32,7 +31,7 @@ public interface TagService {
 
     ResponseEntity createTagByReqParams(String tag);
 
-    ApiResponseOnlyMsg createTagByReqParamsAndGetApiResponse(String tag);
+    ApiResponseMsgWthStatus createTagByReqParamsAndGetApiResponse(String tag);
 
-    ApiResponseWithPagination getAllTagbyPage(String title, int page, int size, String[] sort);
+    ApiResponseWithPagination getAllTagsByPagination(String title, int page, int size, String[] sort);
 }

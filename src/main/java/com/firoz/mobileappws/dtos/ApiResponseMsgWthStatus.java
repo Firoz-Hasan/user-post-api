@@ -1,11 +1,11 @@
 package com.firoz.mobileappws.dtos;
 
-public class ApiResponseOnlyMsg {
+public class ApiResponseMsgWthStatus {
 
     private int status;
     private String message;
 
-    public ApiResponseOnlyMsg(int status, String message) {
+    public ApiResponseMsgWthStatus(int status, String message) {
         this.status = status;
         this.message = message;
     }
