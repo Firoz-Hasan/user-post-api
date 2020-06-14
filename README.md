@@ -13,6 +13,7 @@ implemented number of technologies provided by Spring boot framework.
 3) Content negotiation : providing API response both JSON and XML format.
 4) HATEOAS : providing next resource link automatically
 5) Swagger : documentaion format for restful services
+6) paginaiton with JpaRepository
 
 The basic architecture of this application is given below. 
 ![alt text](
