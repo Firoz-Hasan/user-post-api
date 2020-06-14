@@ -136,4 +136,6 @@ Procedure to test APIs
  
  
  
- Dont forget to add jwt token in the authorization header before calling any API request which you will get it during SignIn process
+ Dont forget to add jwt token in the authorization header before calling any API request which
+  you will get it during SignIn process and create a DB called mydb in mysql workbench / shell,
+  change application.properties as needed.
