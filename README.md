@@ -23,7 +23,7 @@ To make best use of spring boot application, it's mandatory to understand follow
 
 1) Optional : Return type Optional is a new container type that wraps a single value. It is used 
     to represent a value is present or absent. The main advantage of this new construct is that 
-    No more too many null checks and NullPointerException
+    No more too many null checks and NullPointerException.
 2) @RepositoryRestResource(exported = false) disable hal features
 3) JsonBackReference
    	 * This annotation basically says that posts will not be part of the JSON
@@ -34,12 +34,22 @@ To make best use of spring boot application, it's mandatory to understand follow
    	 
 4) @Service : hold the business logic and call method in repository layer
 5) @Bean : create instance of object 
-6) @Autowire : This is a dependency, I want actual object/instance, Pls create dependency for me.
-7) @Component: To make spring annotonation aware that I may need object of this class.
-    It's kinda like "I may need object of this class"
+6) @Autowire : This is a dependency, I want actual object/instance, Pls create dependency for me. you cant @autowire any
+    class if it not marked with @component
+7) @Component: It means that Spring framework will autodetect these classes for dependency injection when 
+    annotation-based configuration and classpath scanning is used.To make spring annotonation aware that 
+    It's kinda like "I may need object of this class. @Component is a class level annotation where as 
+    @Bean is a method level annotation.
+
+VS
+     @Configuration annotation indicates that a class declares one or more @Bean methods and may be processed 
+     by the Spring container to generate bean definitions and service requests for those beans at runtime.
+     
+     
 8) CSRF - Cross-Site Request Forgery vulnerability allows an attacker to force 
     a logged-in user to perform an important action without their consent or knowledge.
-9) @Restcontroller - response body + controller --> return JSON/XML
+9) @Restcontroller - response body + controller --> return JSON/XML, responsible for handling all the incoming client
+    request and delagates it to appropriate service method. 
 10) @controller - returns mapping AKA view as html/jsp
 11) JWT - json web token - used for api authentication 
 12) @Repository - This is to indicate that the class defines a data repository.
@@ -67,7 +77,8 @@ To make best use of spring boot application, it's mandatory to understand follow
     CrudRepository : mainly provides CRUD functions.
     PagingAndSortingRepository : provides methods to do pagination and sorting records.
     JpaRepository : provides some JPA-related methods such as flushing the persistence context and deleting records in a batch.
-
+21) FetchType.Lazy : to avoid recursion, unless u call it, it will not fetch the details.
+22) 
 
 Procedure to test APIs
 

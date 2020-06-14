@@ -9,6 +9,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.ControllerLinkBuilder;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -86,10 +89,24 @@ public class TagServiceImpl implements TagService {
     public ResponseEntity createTagByReqParams(String tag) {
         Tag tag1 = new Tag(tag);
         Tag savedTag = tagDaoRepository.save(tag1);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedTag.getId())
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()// this woould return current req URI - localhost:8083/tagsbyreqparam
+                .path("/{id}") // then appending /id to it
+                .buildAndExpand(savedTag.getId()) // then replacing savedTag.getId()
                 .toUri();
          ResponseEntity.created(location).build();
+
+
+         // HATEOAS - hypermedia as the engine of the applicaiton state
+       EntityModel<Tag> model = new EntityModel<>(savedTag);
+
+        WebMvcLinkBuilder linkTo = WebMvcLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(this.getClass()).listAllTags());
+
+        model.add(linkTo.withRel("all-tags"));
+
+
         return ResponseEntity.ok(new MessageResponseDto("Tag created successfully!"));
+
+
     }
 
     @Override

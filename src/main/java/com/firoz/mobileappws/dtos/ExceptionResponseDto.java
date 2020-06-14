@@ -1,13 +1,13 @@
-package com.firoz.mobileappws.models;
+package com.firoz.mobileappws.dtos;
 
 import java.util.Date;
 
-public class ExceptionResponse {
+public class ExceptionResponseDto {
 	private Date timestamp;
 	private String message;
 	private String details;
 
-	public ExceptionResponse(Date timestamp, String message, String details) {
+	public ExceptionResponseDto(Date timestamp, String message, String details) {
 		super();
 		this.timestamp = timestamp;
 		this.message = message;

@@ -2,7 +2,7 @@ package com.firoz.mobileappws.exception;
 
 import java.util.Date;
 
-import com.firoz.mobileappws.models.ExceptionResponse;
+import com.firoz.mobileappws.dtos.ExceptionResponseDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,23 +21,23 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
-		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+		ExceptionResponseDto exceptionResponseDto = new ExceptionResponseDto(new Date(), ex.getMessage(),
 				request.getDescription(false));
-		return new ResponseEntity(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity(exceptionResponseDto, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@ExceptionHandler(NotFoundException.class)
 	public final ResponseEntity<Object> handleUserNotFoundException(NotFoundException ex, WebRequest request) {
-		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+		ExceptionResponseDto exceptionResponseDto = new ExceptionResponseDto(new Date(), ex.getMessage(),
 				request.getDescription(false));
-		return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+		return new ResponseEntity(exceptionResponseDto, HttpStatus.NOT_FOUND);
 	}
 	
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "Validation Failed",
+		ExceptionResponseDto exceptionResponseDto = new ExceptionResponseDto(new Date(), "Validation Failed",
 				ex.getBindingResult().toString());
-		return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity(exceptionResponseDto, HttpStatus.BAD_REQUEST);
 	}	
 }

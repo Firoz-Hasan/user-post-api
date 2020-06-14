@@ -3,6 +3,7 @@ package com.firoz.mobileappws.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -12,6 +13,7 @@ public class Tag {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Size(min = 2, message = "TagName should have atleast 2 characters")
 	private String tagname;
 	
 	public Tag() {
