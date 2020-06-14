@@ -1,7 +1,18 @@
 # User-Post-API
 Spring boot applicaiton for crud operation
 
-This is a demo application which demonstrates basic crud operation with RESTful web services, Spring boot, Spring MVC, JPA, Connect to MYSQL db, Spring Security  Sign up, Sign in, JSON web token (JWT) based authentication. 
+This is a demo application which demonstrates basic crud operation with RESTful web services, 
+Spring boot, Spring MVC, JPA, Connect to MYSQL db, Spring Security  Sign up, Sign in, 
+JSON web token (JWT) based authentication. 
+
+In this demo project we are trying to achieve basic Crud operation for rest APIs and we have
+implemented number of technologies provided by Spring boot framework.
+
+1) JWT
+2) Actuator : for monitoring APIs.
+3) Content negotiation : providing API response both JSON and XML format.
+4) HATEOAS : providing next resource link automatically
+5) Swagger : documentaion format for restful services
 
 The basic architecture of this application is given below. 
 ![alt text](
