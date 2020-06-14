@@ -15,6 +15,7 @@ implemented number of technologies provided by Spring boot framework.
 5) Swagger : documentaion format for restful services
 6) paginaiton with JpaRepository
 
+
 The basic architecture of this application is given below. 
 ![alt text](
 https://github.com/FirozHasan007/user-post-api/blob/master/High-Level-Design.png
