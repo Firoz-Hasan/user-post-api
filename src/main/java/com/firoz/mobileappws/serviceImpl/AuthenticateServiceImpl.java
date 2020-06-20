@@ -44,7 +44,7 @@ public class AuthenticateServiceImpl implements AuthenticateService {
 
 
     @Override
-    public ResponseEntity<?> authenticateUser(LoginRequestDto loginRequestDto) {
+    public ResponseEntity<?> signInUser(LoginRequestDto loginRequestDto) {
         Authentication authentication =
                 authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken
@@ -67,7 +67,7 @@ public class AuthenticateServiceImpl implements AuthenticateService {
     }
 
     @Override
-    public ResponseEntity<?> registerUser(SignupRequestDto signUpRequestDto) {
+    public ResponseEntity<?> signUpUser(SignupRequestDto signUpRequestDto) {
         if (authenticateDaoRepository.existsByUsername(signUpRequestDto.getUsername())) {
             return ResponseEntity
                     .badRequest()

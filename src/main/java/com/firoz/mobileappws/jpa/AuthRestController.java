@@ -21,11 +21,11 @@ public class AuthRestController {
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequestDto loginRequestDto) {
-		return authenticateService.authenticateUser(loginRequestDto);
+		return authenticateService.signInUser(loginRequestDto);
 	}
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequestDto signUpRequestDto) {
-		return authenticateService.registerUser(signUpRequestDto);
+		return authenticateService.signUpUser(signUpRequestDto);
 	}
 }
