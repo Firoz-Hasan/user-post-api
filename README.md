@@ -139,3 +139,22 @@ Procedure to test APIs
  Dont forget to add jwt token in the authorization header before calling any API request which
   you will get it during SignIn process and create a DB called mydb in mysql workbench / shell,
   change application.properties as needed.
+  
+  Docker 
+  Now we will learn how to dockerize spring boot application, building image by using docker file and at the end 
+  launching spring boot application with mysql db all together by using docker compose.
+  
+  Let's have some basic understanding about docker
+  
+  ![alt text](
+  https://github.com/FirozHasan007/user-post-api/blob/master/DockerMainPurpose.jpg
+  )
+  
+  Let's see what docker host is consists of 
+  
+  ![alt text](
+  https://github.com/FirozHasan007/user-post-api/blob/master/DockerHost.jpg
+  )
+  
+  So, in order to run this
+  
