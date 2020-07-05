@@ -141,6 +141,7 @@ Procedure to test APIs
   change application.properties as needed.
   
   Docker 
+  
   Now we will learn how to dockerize spring boot application, building image by using docker file and at the end 
   launching spring boot application with mysql db all together by using docker compose.
   
