@@ -23,7 +23,7 @@ services:
       RDS_USERNAME: todos-user
       RDS_PASSWORD: dummytodos
     networks:
-      - web-application-mysql-network
+      - user-post-application-mysql-network
 
   mysql:
     image: mysql:5.7
@@ -39,11 +39,11 @@ services:
     volumes:
       - mysql-database-data-volume:/var/lib/mysql
     networks:
-      - web-application-mysql-network  
+      - user-post-application-mysql-network  
   
 # Volumes
 volumes:
   mysql-database-data-volume:
 
 networks:
-  web-application-mysql-network:
+  user-post-application-mysql-network:
