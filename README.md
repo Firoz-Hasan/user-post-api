@@ -156,5 +156,18 @@ Procedure to test APIs
   https://github.com/FirozHasan007/user-post-api/blob/master/DockerHost.jpg
   )
   
-  So, in order to run this
+  So, in order to run this spring boot application :
+  1- at first, we need to create .jar file of this application. we can type "mvn clean package -DskipTests" in CMD to get .jar.
+  2- then after creating .jar file now we have to create the image of the application so we can type 
+  "docker build -t diganto007/user-post-api:0.0.1-SNAPSHOT ."
+  3- we have our image for spring boot application is ready to deploy but instead of launching spring boot application 
+  and mysql db seperately, we can use docker-compose to launch both of them together. A docker-compose.yml file has been
+  written and customized to serve the purpose. So now we can just type "docker-compose up" in CMD.
+  So what is the difference between dockerfile and docker compose ?
+  A Dockerfile is a simple text file that contains the commands a user could call to assemble an image whereas 
+  Docker Compose is a tool for defining and running multi-container Docker applications. Docker Compose define 
+  the services that make up your app in docker-compose.yml so they can be run together in an isolated environment.
+  
+  Pls check the youtube video for better understanding how to dockerize your application. (https://www.youtube.com/watch?v=HL0s3YGmjew)
+  
   
