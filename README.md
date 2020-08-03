@@ -91,7 +91,16 @@ VS
     PagingAndSortingRepository : provides methods to do pagination and sorting records.
     JpaRepository : provides some JPA-related methods such as flushing the persistence context and deleting records in a batch.
 21) FetchType.Lazy : to avoid recursion, unless u call it, it will not fetch the details.
-22) 
+22) Maven : build & dependency management tools
+    
+    maven let you declare all the dependency that you want in a single
+    file. you dont have to download the file and add in your class path,
+    you just mention the jars that you need are into this file which is called
+    pom.xml. In this file contains list of dependencies that maven needs to
+    know. Then you run a maven command and maven gonna look at your dependencies
+    and find all the dependencies that app needs to run & it goes to
+    that repository (https://mvnrepository.com/) to get all the jars.
+
 
 Procedure to test APIs
 
