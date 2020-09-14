@@ -21,6 +21,10 @@ The basic architecture of this application is given below.
 https://github.com/FirozHasan007/user-post-api/blob/master/High-Level-Design.png
 )
 
+![alt text](
+https://github.com/FirozHasan007/user-post-api/blob/master/understadingSpringStructure.jpg
+)
+
 
 The EER model diagram as follows 
 
